@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Congo Rural Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap">
+<style>
+/* Layout: one long page, sticky top bar, four sections that follow the visitor's path: articles, formation, livres, contact. */
+:root {
+  --bg: #edf0f2;
+  --surface: #ffffff;
+  --fg: #13202c;
+  --muted: #4d6071;
+  --line: #c9d2d9;
+  --accent: #1b4f8f;
+  --accent-fg: #ffffff;
+  --signal: #f2b705;
+  --signal-fg: #13202c;
+  --font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1721; --surface: #142331; --fg: #e7eef4; --muted: #9db0c0;
+    --line: #2a3c4c; --accent: #6fa8e8; --accent-fg: #0d1721;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1721; --surface: #142331; --fg: #e7eef4; --muted: #9db0c0;
+  --line: #2a3c4c; --accent: #6fa8e8; --accent-fg: #0d1721;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body {
+  background: var(--bg); color: var(--fg);
+  font: 400 1.0625rem/1.6 var(--font-body);
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 68rem; margin-inline: auto; padding-inline: 1rem; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: 0.005em; }
+h1 { font-size: clamp(2.6rem, 8vw, 4.6rem); text-transform: uppercase; }
+h2 { font-size: clamp(2rem, 5vw, 2.9rem); text-transform: uppercase; }
+h3 { font-size: 1.5rem; }
+p { margin: 0; }
+.label { font: 500 0.78rem/1.2 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+.bar .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem 1.5rem; padding-block: 0.6rem; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; text-transform: uppercase; text-decoration: none; letter-spacing: 0.02em; }
+.brand span { background: var(--signal); color: var(--signal-fg); padding: 0 0.3em; margin-right: 0.2em; }
+nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem; }
+nav a { text-decoration: none; font-weight: 600; font-size: 0.95rem; padding-block: 0.25rem; border-bottom: 2px solid transparent; }
+nav a:hover { border-bottom-color: var(--accent); }
+
+/* hero */
+.hazard { height: 8px; background: repeating-linear-gradient(135deg, var(--signal) 0 14px, var(--fg) 14px 28px); }
+.hero { padding-block: 2.5rem 3rem; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem 3rem; align-items: center; }
+.hero p.lead { font-size: 1.2rem; color: var(--muted); max-width: 34rem; margin-top: 1.25rem; }
+.cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.btn { display: inline-block; text-decoration: none; font-weight: 600; padding: 0.7rem 1.2rem; border: 2px solid var(--fg); background: transparent; color: var(--fg); border-radius: 2px; cursor: pointer; font-family: var(--font-body); font-size: 1rem; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.btn:hover { transform: translateY(-1px); }
+.plan { background: var(--surface); border: 1px solid var(--line); padding: 0.75rem; min-width: 0; }
+.plan svg { display: block; width: 100%; height: auto; }
+.plan .label { margin-top: 0.5rem; }
+.s-ln { fill: none; stroke: var(--fg); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.s-thin { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.s-liq { fill: var(--accent); fill-opacity: 0.28; stroke: none; }
+.s-gas { fill: var(--signal); fill-opacity: 0.55; stroke: none; }
+.s-txt { font: 500 11px var(--font-mono); fill: var(--fg); }
+
+/* path steps */
+.path { padding-block: 0 2.5rem; }
+.path ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; counter-reset: step; }
+.path li { background: var(--surface); border: 1px solid var(--line); padding: 1rem 1.1rem; min-width: 0; }
+.path li b { display: block; font-family: var(--font-display); font-size: 1.4rem; text-transform: uppercase; }
+.path li .label { margin-bottom: 0.35rem; }
+.path li p { color: var(--muted); font-size: 0.98rem; }
+
+/* sections */
+section.block { padding-block: 3rem; border-top: 1px solid var(--line); }
+.head { display: grid; gap: 0.6rem; margin-bottom: 1.75rem; max-width: 40rem; }
+.head p { color: var(--muted); }
+
+/* articles */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.chip { font: 500 0.82rem var(--font-mono); letter-spacing: 0.04em; padding: 0.4rem 0.8rem; border: 1px solid var(--fg); background: transparent; color: var(--fg); cursor: pointer; border-radius: 2px; }
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.articles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 1rem; align-items: start; }
+.art { background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+.art summary { list-style: none; cursor: pointer; padding: 1.1rem 1.2rem; display: grid; gap: 0.5rem; }
+.art summary::-webkit-details-marker { display: none; }
+.art summary h3 { font-size: 1.55rem; }
+.art summary::after { content: "Lire l'article +"; font-weight: 600; font-size: 0.92rem; color: var(--accent); }
+.art[open] summary::after { content: "Fermer −"; }
+.art .body { padding: 0 1.2rem 1.2rem; color: var(--muted); }
+.art .body p + p { margin-top: 0.7rem; }
+.art .spec { margin-top: 0.9rem; padding: 0.6rem 0.8rem; background: var(--bg); font: 500 0.85rem/1.5 var(--font-mono); color: var(--fg); overflow-x: auto; }
+
+/* formation */
+.formation { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.25rem; align-items: start; }
+.modules { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; background: var(--surface); border: 1px solid var(--line); }
+.modules li { display: grid; grid-template-columns: 3.2rem 1fr; gap: 0.75rem; padding: 1rem 1.1rem; border-top: 1px solid var(--line); min-width: 0; }
+.modules li:first-child { border-top: 0; }
+.modules .n { font: 500 1.4rem var(--font-mono); color: var(--accent); }
+.modules b { display: block; font-size: 1.08rem; }
+.modules span.d { color: var(--muted); font-size: 0.97rem; }
+.offer { background: var(--fg); color: var(--bg); padding: 1.4rem; min-width: 0; }
+.offer h3 { color: var(--bg); }
+.offer dl { margin: 1rem 0 1.25rem; display: grid; gap: 0.5rem; }
+.offer dl div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid color-mix(in srgb, var(--bg) 25%, transparent); padding-bottom: 0.4rem; }
+.offer dt { font: 500 0.78rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.8; }
+.offer dd { margin: 0; font-weight: 600; text-align: right; }
+.offer .btn { background: var(--signal); border-color: var(--signal); color: var(--signal-fg); width: 100%; text-align: center; }
+
+
+/* formations */
+.forms { display: grid; gap: 1rem; }
+.form { background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+.form summary { list-style: none; cursor: pointer; padding: 1.2rem 1.3rem; display: grid; gap: 0.4rem; }
+.form summary::-webkit-details-marker { display: none; }
+.form summary p { color: var(--muted); max-width: 46rem; }
+.form summary h3 { font-size: 1.9rem; text-transform: uppercase; }
+.form .more::after { content: "Voir le programme +"; font-weight: 600; font-size: 0.92rem; color: var(--accent); }
+.form[open] .more::after { content: "Réduire −"; }
+.fbody { padding: 0 1.3rem 1.4rem; display: grid; gap: 1.25rem; border-top: 1px solid var(--line); padding-top: 1.1rem; }
+.meta { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 0.75rem 1.25rem; }
+.meta div { border-left: 3px solid var(--signal); padding-left: 0.7rem; min-width: 0; }
+.meta dt { font: 500 0.74rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.meta dd { margin: 0.1rem 0 0; font-weight: 600; font-size: 0.97rem; }
+.cols { display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem 2rem; }
+.cols > div { min-width: 0; }
+.cols h4 { font: 700 1.2rem var(--font-display); text-transform: uppercase; margin: 0 0 0.5rem; }
+.cols h4:not(:first-child) { margin-top: 1.1rem; }
+.cols ul { margin: 0; padding-left: 1.1rem; color: var(--muted); display: grid; gap: 0.3rem; }
+.cols p { color: var(--muted); }
+.prog { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.8rem; }
+.prog > li b { display: block; margin-bottom: 0.2rem; }
+.fbody .btn { justify-self: start; }
+@media (max-width: 52rem) { .cols { grid-template-columns: 1fr; } }
+
+/* livres */
+.books { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 1rem; }
+.book { background: var(--surface); border: 1px solid var(--line); display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
+.cover { padding: 1.1rem 1.1rem 1rem; background: var(--accent); color: var(--accent-fg); min-height: 11rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; }
+.cover .label { color: inherit; opacity: 0.85; }
+.cover h3 { font-size: 1.7rem; text-transform: uppercase; }
+.book:nth-child(2) .cover { background: var(--fg); color: var(--bg); }
+.book:nth-child(3) .cover { background: var(--signal); color: var(--signal-fg); }
+.book .info { padding: 0.9rem 1.1rem 0; color: var(--muted); font-size: 0.98rem; }
+.book .buy { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.9rem 1.1rem 1.1rem; flex-wrap: wrap; }
+.price { font: 500 0.9rem var(--font-mono); }
+
+
+/* contenu publié */
+.empty { border: 1px dashed var(--muted); padding: 1.25rem; color: var(--muted); background: var(--surface); }
+.vids, .pdfs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.vid, .pdf { background: var(--surface); border: 1px solid var(--line); padding: 1.1rem 1.2rem; display: grid; gap: 0.6rem; align-content: start; min-width: 0; }
+.vid h3, .pdf h3 { font-size: 1.45rem; }
+.vid p, .pdf p { color: var(--muted); }
+.vid .btn, .pdf .btn { justify-self: start; }
+.pay { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 1rem; }
+.pay li { background: var(--fg); color: var(--bg); padding: 1rem 1.1rem; min-width: 0; }
+.pay li .label { color: inherit; opacity: 0.8; margin-bottom: 0.3rem; }
+.pay li b { font-family: var(--font-display); font-size: 1.35rem; text-transform: uppercase; display: block; }
+.pay li p { opacity: 0.9; font-size: 0.97rem; }
+.terms { margin-top: 1.25rem; padding: 0.9rem 1.1rem; border-left: 4px solid var(--signal); background: var(--surface); color: var(--muted); font-size: 0.97rem; }
+
+/* contact */
+.contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); padding: 1.1rem 1.2rem; display: grid; gap: 0.6rem; min-width: 0; }
+.copy-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.copy-row code { font: 500 0.95rem var(--font-mono); background: var(--bg); padding: 0.35rem 0.6rem; user-select: all; overflow-wrap: anywhere; }
+.copy-row button { font: 600 0.85rem var(--font-body); padding: 0.4rem 0.8rem; border: 1px solid var(--fg); background: transparent; color: var(--fg); cursor: pointer; border-radius: 2px; }
+.note { margin-top: 2.5rem; padding: 0.9rem 1.1rem; border: 1px dashed var(--muted); color: var(--muted); font-size: 0.95rem; }
+footer { padding-block: 2rem 3rem; color: var(--muted); font-size: 0.92rem; border-top: 1px solid var(--line); }
+
+@media (max-width: 52rem) {
+  .hero .wrap, .formation { grid-template-columns: 1fr; }
+  .path ol { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#accueil"><span>Congo</span>Rural Engineering</a>
+    <nav aria-label="Navigation principale">
+      <a href="#articles">Articles</a>
+      <a href="#videos">Vidéos</a>
+      <a href="#guides">Guides PDF</a>
+      <a href="#formation">Formations</a>
+      <a href="#livres">Livre</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<div class="hazard" aria-hidden="true"></div>
+
+<main id="accueil">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="label">Génie rural · Biogaz · Pisciculture · Agriculture moderne</p>
+        <h1 style="margin-top:0.75rem">Le génie rural, expliqué pour le terrain</h1>
+        <p class="lead">Des articles, des vidéos et des guides PDF gratuits. Puis des formations pour réussir un digesteur, un étang à poissons, une exploitation moderne ou un point d'eau sûr. Par un enseignant en génie rural, en République Démocratique du Congo.</p>
+        <div class="cta">
+          <a class="btn primary" href="#articles">Lire les articles</a>
+          <a class="btn" href="#formation">Voir les formations</a>
+        </div>
+      </div>
+      <figure class="plan" style="margin:0">
+        <svg viewBox="0 0 360 230" role="img" aria-labelledby="plan-t">
+          <title id="plan-t">Coupe d'un digesteur de biogaz : entrée, cuve, dôme à gaz, sortie du digestat</title>
+          <line class="s-thin" x1="0" y1="80" x2="360" y2="80"/>
+          <path class="s-liq" d="M100 118 H260 V180 Q260 200 240 200 H120 Q100 200 100 180 Z"/>
+          <path class="s-gas" d="M100 80 Q180 10 260 80 V118 H100 Z"/>
+          <path class="s-ln" d="M100 80 V180 Q100 200 120 200 H240 Q260 200 260 180 V80"/>
+          <path class="s-ln" d="M100 80 Q180 10 260 80"/>
+          <line class="s-ln" x1="180" y1="45" x2="180" y2="18"/>
+          <line class="s-ln" x1="180" y1="18" x2="300" y2="18"/>
+          <line class="s-ln" x1="168" y1="30" x2="192" y2="30"/>
+          <line class="s-ln" x1="22" y1="48" x2="100" y2="124"/>
+          <line class="s-ln" x1="260" y1="165" x2="330" y2="165"/>
+          <line class="s-ln" x1="330" y1="165" x2="330" y2="110"/>
+          <text class="s-txt" x="8" y="38">entrée : bouse + eau</text>
+          <text class="s-txt" x="200" y="12">gaz vers la cuisine</text>
+          <text class="s-txt" x="122" y="104">gaz</text>
+          <text class="s-txt" x="122" y="164">fermentation</text>
+          <text class="s-txt" x="238" y="192" text-anchor="end">digestat</text>
+          <text class="s-txt" x="330" y="100" text-anchor="end">sortie</text>
+          <text class="s-txt" x="8" y="96">sol</text>
+        </svg>
+        <p class="label">Coupe d'un digesteur familial, sans échelle</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="path">
+    <div class="wrap">
+      <ol>
+        <li><p class="label">Gratuit</p><b>Apprendre</b><p>Articles, vidéos et guides PDF publiés régulièrement.</p></li>
+        <li><p class="label">Payant</p><b>Se former</b><p>Un parcours complet, avec exercices et suivi personnel.</p></li>
+        <li><p class="label">Payant</p><b>Garder</b><p>Le livre « Nos déchets, c'est de l'or », à relire à tout moment.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="articles">
+    <div class="wrap">
+      <div class="head"><p class="label">Gratuit</p><h2>Articles</h2><p>Chaque article traite une seule question, avec les chiffres utiles.</p></div>
+      <div class="chips" id="chips" role="group" aria-label="Filtrer par catégorie"></div>
+      <div class="articles" id="articles-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="videos">
+    <div class="wrap">
+      <div class="head"><p class="label">Gratuit</p><h2>Vidéos</h2><p>Démonstrations sur le terrain : digesteur, étang, compost.</p></div>
+      <div class="vids" id="videos-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="guides">
+    <div class="wrap">
+      <div class="head"><p class="label">Gratuit</p><h2>Guides PDF</h2><p>Des fiches à télécharger et à garder sur le téléphone.</p></div>
+      <div class="pdfs" id="pdfs-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="formation">
+    <div class="wrap">
+      <div class="head">
+        <p class="label">Formations payantes</p>
+        <h2>Formations</h2>
+        <p>Quatre parcours avec programme détaillé, exercices et suivi par WhatsApp. Ouvrez un parcours pour voir le programme.</p>
+      </div>
+      <ol class="pay">
+        <li><p class="label">Étape 1</p><b>Écrire</b><p>Choisissez la formation et écrivez-moi sur WhatsApp avec le bouton S'inscrire.</p></li>
+        <li><p class="label">Étape 2</p><b>Payer</b><p>Vous payez par mobile money. Je confirme la réception du paiement.</p></li>
+        <li><p class="label">Étape 3</p><b>Recevoir</b><p>Vous recevez votre accès personnel, à votre nom, avec les cours et exercices.</p></li>
+      </ol>
+      <div class="forms">
+        <details class="form" id="f1" open>
+          <summary><span class="label">Biogaz · 25 $</span><h3>Biogaz : du principe au digesteur</h3><p>Comprendre la fermentation, dimensionner et construire un digesteur familial, puis l'exploiter en sécurité.</p><span class="more"></span></summary>
+          <div class="fbody">
+            <dl class="meta"><div><dt>Niveau</dt><dd>Débutant à intermédiaire</dd></div><div><dt>Durée</dt><dd>5 semaines, 2 h par semaine</dd></div><div><dt>Format</dt><dd>Cours PDF, schémas, démonstration à petite échelle, suivi WhatsApp</dd></div><div><dt>Prix</dt><dd>25 $</dd></div></dl>
+            <div class="cols">
+              <div><h4>À la fin, vous saurez</h4><ul><li>Expliquer la fermentation sans air et ses conditions</li><li>Estimer la matière nécessaire et le volume de la cuve</li><li>Choisir entre dôme fixe, cloche flottante et digesteur tubulaire</li><li>Alimenter, surveiller et entretenir un digesteur, et utiliser le digestat comme engrais</li></ul><h4>Pour qui</h4><p>Agriculteurs, éleveurs, familles, techniciens et étudiants.</p></div>
+              <div><h4>Programme</h4><ol class="prog"><li><b>Module 1 · Principe du biogaz</b><ul><li>Fermentation sans air : les quatre étapes</li><li>Composition du biogaz : environ 55 à 65 % de méthane</li><li>Température idéale : 30 à 40 °C</li></ul></li><li><b>Module 2 · Matières et dimensionnement</b><ul><li>Bouse, déchets de cuisine, résidus de culture</li><li>Dilution avec l'eau</li><li>Temps de séjour et volume du digesteur</li></ul></li><li><b>Module 3 · Construction</b><ul><li>Dôme fixe, cloche flottante, tubulaire : avantages et limites</li><li>Cuve, entrée et sortie</li><li>Conduite de gaz, robinet et brûleur</li></ul></li><li><b>Module 4 · Démonstration à petite échelle</b><ul><li>Expérience avec bouteille : comprendre avant de construire</li><li>Mesurer la production et corriger</li><li>Du modèle réduit au digesteur réel</li></ul></li><li><b>Module 5 · Exploitation et sécurité</b><ul><li>Alimentation régulière et contrôle du pH</li><li>Digestat : usage comme engrais</li><li>Sécurité : le méthane est explosif dans l'air entre 5 et 15 %, ventiler, pas de flamme près d'une fuite</li></ul></li></ol></div>
+            </div>
+            <a class="btn primary" href="https://wa.me/243976197091?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20%C2%AB%20Biogaz%20%3A%20du%20principe%20au%20digesteur%20%C2%BB.">S'inscrire sur WhatsApp</a>
+          </div>
+        </details>
+        <details class="form" id="f2">
+          <summary><span class="label">Pisciculture · 15 $</span><h3>Pisciculture : de l'étang à la récolte</h3><p>Installer un étang, choisir l'espèce, nourrir les poissons et vendre la récolte.</p><span class="more"></span></summary>
+          <div class="fbody">
+            <dl class="meta"><div><dt>Niveau</dt><dd>Débutant</dd></div><div><dt>Durée</dt><dd>4 semaines, 2 h par semaine</dd></div><div><dt>Format</dt><dd>Cours PDF, schémas, études de cas, suivi WhatsApp</dd></div><div><dt>Prix</dt><dd>15 $</dd></div></dl>
+            <div class="cols">
+              <div><h4>À la fin, vous saurez</h4><ul><li>Choisir un site et creuser un étang qui retient l'eau</li><li>Choisir l'espèce (tilapia, silure) et la densité d'empoissonnement</li><li>Nourrir les poissons et suivre leur croissance</li><li>Surveiller la qualité de l'eau et prévenir les maladies</li></ul><h4>Pour qui</h4><p>Agriculteurs, jeunes entrepreneurs, groupements ruraux.</p></div>
+              <div><h4>Programme</h4><ol class="prog"><li><b>Module 1 · Bases et espèces</b><ul><li>Tilapia et silure : atouts et exigences</li><li>Cycle d'élevage</li><li>Rentabilité d'un petit élevage</li></ul></li><li><b>Module 2 · Site et construction de l'étang</b><ul><li>Choix du terrain et du sol</li><li>Profondeur, digues, arrivée et sortie d'eau</li><li>Grilles de protection</li></ul></li><li><b>Module 3 · Alevins et alimentation</b><ul><li>Choisir des alevins sains</li><li>Aliments naturels et granulés</li><li>Rations et fréquence</li></ul></li><li><b>Module 4 · Qualité de l'eau et santé</b><ul><li>Température, oxygène, transparence</li><li>Signes de maladie</li><li>Mesures d'hygiène du bassin</li></ul></li><li><b>Module 5 · Récolte et vente</b><ul><li>Pêche et tri</li><li>Conservation et transport</li><li>Fixer son prix de vente</li></ul></li></ol></div>
+            </div>
+            <a class="btn primary" href="https://wa.me/243976197091?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20%C2%AB%20Pisciculture%20%3A%20de%20l%27%C3%A9tang%20%C3%A0%20la%20r%C3%A9colte%20%C2%BB.">S'inscrire sur WhatsApp</a>
+          </div>
+        </details>
+        <details class="form" id="f3">
+          <summary><span class="label">Agriculture · 15 $</span><h3>Agriculture moderne et fertilité du sol</h3><p>Produire plus sur la même terre : sol, compost, rotations et irrigation économe.</p><span class="more"></span></summary>
+          <div class="fbody">
+            <dl class="meta"><div><dt>Niveau</dt><dd>Débutant à intermédiaire</dd></div><div><dt>Durée</dt><dd>4 semaines, 2 h par semaine</dd></div><div><dt>Format</dt><dd>Cours PDF, fiches pratiques, suivi WhatsApp</dd></div><div><dt>Prix</dt><dd>15 $</dd></div></dl>
+            <div class="cols">
+              <div><h4>À la fin, vous saurez</h4><ul><li>Lire l'état de son sol avec des tests simples</li><li>Fabriquer un compost et utiliser le digestat du biogaz</li><li>Organiser rotations et associations de cultures</li><li>Économiser l'eau avec le paillage et le goutte-à-goutte</li></ul><h4>Pour qui</h4><p>Agriculteurs, coopératives, étudiants en agronomie et génie rural.</p></div>
+              <div><h4>Programme</h4><ol class="prog"><li><b>Module 1 · Le sol</b><ul><li>Texture et structure</li><li>Tests simples sur le terrain</li><li>Acidité et correction</li></ul></li><li><b>Module 2 · Compost et engrais organiques</b><ul><li>Réussir un tas de compost</li><li>Digestat du biogaz</li><li>Dosages et épandage</li></ul></li><li><b>Module 3 · Cultures</b><ul><li>Semis, repiquage, densités</li><li>Rotations et associations</li><li>Calendrier cultural</li></ul></li><li><b>Module 4 · Eau et protection</b><ul><li>Paillage et irrigation goutte-à-goutte</li><li>Protection intégrée des cultures</li><li>Récolte et stockage</li></ul></li></ol></div>
+            </div>
+            <a class="btn primary" href="https://wa.me/243976197091?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20%C2%AB%20Agriculture%20moderne%20et%20fertilit%C3%A9%20du%20sol%20%C2%BB.">S'inscrire sur WhatsApp</a>
+          </div>
+        </details>
+        <details class="form" id="f4">
+          <summary><span class="label">Eau et hygiène · 15 $</span><h3>Eau, hygiène et assainissement rural</h3><p>Protéger l'eau de boisson du village et éviter les maladies liées à l'eau.</p><span class="more"></span></summary>
+          <div class="fbody">
+            <dl class="meta"><div><dt>Niveau</dt><dd>Débutant à intermédiaire</dd></div><div><dt>Durée</dt><dd>4 semaines, 2 h par semaine</dd></div><div><dt>Format</dt><dd>Cours PDF, schémas, études de cas, suivi WhatsApp</dd></div><div><dt>Prix</dt><dd>15 $</dd></div></dl>
+            <div class="cols">
+              <div><h4>À la fin, vous saurez</h4><ul><li>Expliquer le lien entre eau, hygiène et santé</li><li>Concevoir un captage de source et sa zone de protection</li><li>Choisir et placer latrines, puisards et fosses</li><li>Rendre une eau plus sûre par filtration et désinfection</li></ul><h4>Pour qui</h4><p>Techniciens, comités d'eau, enseignants, étudiants en génie rural.</p></div>
+              <div><h4>Programme</h4><ol class="prog"><li><b>Module 1 · Eau et santé</b><ul><li>Usages et qualités de l'eau</li><li>Maladies liées à l'eau</li><li>Rôle de l'hygiène</li></ul></li><li><b>Module 2 · Captage et puits</b><ul><li>Ouvrage de captage : drain, chambre, trop-plein</li><li>Puits protégé</li><li>Zone de protection en amont</li></ul></li><li><b>Module 3 · Traitement de l'eau</b><ul><li>Filtration simple</li><li>Désinfection</li><li>Stockage à domicile</li></ul></li><li><b>Module 4 · Évacuation et déchets</b><ul><li>Latrines et distances à respecter</li><li>Eaux usées, puisards et fosses</li><li>Gestion des déchets du village</li></ul></li></ol></div>
+            </div>
+            <a class="btn primary" href="https://wa.me/243976197091?text=Bonjour%2C%20je%20veux%20m%27inscrire%20%C3%A0%20la%20formation%20%C2%AB%20Eau%2C%20hygi%C3%A8ne%20et%20assainissement%20rural%20%C2%BB.">S'inscrire sur WhatsApp</a>
+          </div>
+        </details>
+      </div>
+      <p class="terms">Chaque accès est personnel et ne se transmet pas. Les supports sont remis à votre nom, ce qui permet de retrouver l'origine d'une fuite. Un accès partagé peut être fermé sans remboursement.</p>
+    </div>
+  </section>
+
+
+  <section class="block" id="livres">
+    <div class="wrap">
+      <div class="head"><p class="label">Livre PDF</p><h2>Livre</h2><p>Un seul paiement, le fichier est à vous.</p></div>
+      <div class="books">
+        <article class="book">
+          <div class="cover"><span class="label">Livre · PDF</span><h3>Nos déchets, c'est de l'or</h3></div>
+          <p class="info">Comment transformer les déchets en énergie et en engrais grâce au biogaz.</p>
+          <div class="buy"><span class="price">Prix : sur demande</span><a class="btn primary" href="https://wa.me/243976197091?text=Bonjour%2C%20je%20veux%20commander%20le%20livre%20%C2%AB%20Nos%20d%C3%A9chets%2C%20c%27est%20de%20l%27or%20%C2%BB.">Commander</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="head"><p class="label">Contact</p><h2>Contact et commandes</h2><p>Pour une inscription ou une commande, écrivez-moi. Je confirme le paiement par mobile money et j'envoie votre accès.</p></div>
+      <div class="contact">
+        <div class="card"><span class="label">WhatsApp</span>
+          <div class="copy-row"><code id="c-wa">+243 976 197 091</code><button type="button" data-copy="c-wa">Copier</button></div>
+          <a class="btn primary" href="https://wa.me/243976197091">Écrire sur WhatsApp</a></div>
+        <div class="card"><span class="label">E-mail</span>
+          <div class="copy-row"><code id="c-mail">guillaumesalita8@gmail.com</code><button type="button" data-copy="c-mail">Copier</button></div></div>
+        <div class="card"><span class="label">Réseaux</span>
+          <p><a href="https://www.facebook.com/profile.php?id=61584759847537">Facebook</a> · <a href="https://www.tiktok.com/@ir.gr.salita.guil">TikTok</a></p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Congo Rural Engineering · Génie rural, biogaz, pisciculture et agriculture moderne · République Démocratique du Congo</div></footer>
+
+<script src="contenu.js"></script>
+<script>
+(function () {
+  var C = window.CONTENU || { articles: [], videos: [], pdfs: [] };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+  function empty(box, msg) { box.appendChild(el('p', 'empty', msg)); }
+
+  var list = document.getElementById('articles-list'), chips = document.getElementById('chips');
+  if (!C.articles.length) empty(list, 'Les premiers articles arrivent bientôt.');
+  C.articles.forEach(function (a) {
+    var d = el('details', 'art'); d.setAttribute('data-cat', a.cat);
+    var sm = el('summary'); sm.appendChild(el('span', 'label', a.cat + (a.duree ? ' · ' + a.duree : ''))); sm.appendChild(el('h3', '', a.titre));
+    var b = el('div', 'body'); a.paras.forEach(function (p) { b.appendChild(el('p', '', p)); });
+    if (a.spec) { var sp = el('div', 'spec'); sp.innerHTML = ''; a.spec.forEach(function (l, i) { if (i) sp.appendChild(document.createElement('br')); sp.appendChild(document.createTextNode(l)); }); b.appendChild(sp); }
+    d.appendChild(sm); d.appendChild(b); list.appendChild(d);
+  });
+  var cats = ['Tous']; C.articles.forEach(function (a) { if (cats.indexOf(a.cat) < 0) cats.push(a.cat); });
+  if (cats.length > 2) cats.forEach(function (c, i) {
+    var bt = el('button', 'chip', c); bt.type = 'button'; bt.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    bt.addEventListener('click', function () {
+      chips.querySelectorAll('.chip').forEach(function (x) { x.setAttribute('aria-pressed', x === bt ? 'true' : 'false'); });
+      list.querySelectorAll('.art').forEach(function (a) { a.hidden = !(c === 'Tous' || a.getAttribute('data-cat') === c); });
+    });
+    chips.appendChild(bt);
+  });
+
+  var vb = document.getElementById('videos-list');
+  if (!C.videos.length) empty(vb, 'Les premières vidéos arrivent bientôt. Suivez la page TikTok en attendant.');
+  C.videos.forEach(function (v) {
+    var c = el('article', 'vid'); c.appendChild(el('span', 'label', v.cat)); c.appendChild(el('h3', '', v.titre));
+    if (v.description) c.appendChild(el('p', '', v.description));
+    var a = el('a', 'btn primary', 'Regarder la vidéo'); a.href = v.url; c.appendChild(a); vb.appendChild(c);
+  });
+
+  var pb = document.getElementById('pdfs-list');
+  if (!C.pdfs.length) empty(pb, 'Les premiers guides PDF arrivent bientôt.');
+  C.pdfs.forEach(function (p) {
+    var c = el('article', 'pdf'); c.appendChild(el('span', 'label', 'PDF gratuit')); c.appendChild(el('h3', '', p.titre));
+    if (p.description) c.appendChild(el('p', '', p.description));
+    var a = el('a', 'btn primary', 'Ouvrir le PDF'); a.href = p.fichier; c.appendChild(a); pb.appendChild(c);
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var e = document.getElementById(btn.getAttribute('data-copy'));
+      var done = function () { btn.textContent = 'Copié'; setTimeout(function () { btn.textContent = 'Copier'; }, 1500); };
+      var fb = function () { var r = document.createRange(); r.selectNodeContents(e); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); };
+      try { navigator.clipboard.writeText(e.textContent).then(done, fb); } catch (x) { fb(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
