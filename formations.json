@@ -1,0 +1,220 @@
+{
+  "formations": [
+    {
+      "titre": "Biogaz : du principe au digesteur",
+      "categorie": "Biogaz",
+      "prix": "25 $",
+      "accroche": "Comprendre la fermentation, dimensionner et construire un digesteur familial, puis l'exploiter en sécurité.",
+      "niveau": "Débutant à intermédiaire",
+      "duree": "5 semaines, 2 h par semaine",
+      "format": "Cours PDF, schémas, démonstration à petite échelle, suivi WhatsApp",
+      "competences": [
+        "Expliquer la fermentation sans air et ses conditions",
+        "Estimer la matière nécessaire et le volume de la cuve",
+        "Choisir entre dôme fixe, cloche flottante et digesteur tubulaire",
+        "Alimenter, surveiller et entretenir un digesteur, et utiliser le digestat comme engrais"
+      ],
+      "public": "Agriculteurs, éleveurs, familles, techniciens et étudiants.",
+      "modules": [
+        {
+          "titre": "Module 1 · Principe du biogaz",
+          "lecons": [
+            "Fermentation sans air : les quatre étapes",
+            "Composition du biogaz : environ 55 à 65 % de méthane",
+            "Température idéale : 30 à 40 °C"
+          ]
+        },
+        {
+          "titre": "Module 2 · Matières et dimensionnement",
+          "lecons": [
+            "Bouse, déchets de cuisine, résidus de culture",
+            "Dilution avec l'eau",
+            "Temps de séjour et volume du digesteur"
+          ]
+        },
+        {
+          "titre": "Module 3 · Construction",
+          "lecons": [
+            "Dôme fixe, cloche flottante, tubulaire : avantages et limites",
+            "Cuve, entrée et sortie",
+            "Conduite de gaz, robinet et brûleur"
+          ]
+        },
+        {
+          "titre": "Module 4 · Démonstration à petite échelle",
+          "lecons": [
+            "Expérience avec bouteille : comprendre avant de construire",
+            "Mesurer la production et corriger",
+            "Du modèle réduit au digesteur réel"
+          ]
+        },
+        {
+          "titre": "Module 5 · Exploitation et sécurité",
+          "lecons": [
+            "Alimentation régulière et contrôle du pH",
+            "Digestat : usage comme engrais",
+            "Sécurité : le méthane est explosif dans l'air entre 5 et 15 %, ventiler, pas de flamme près d'une fuite"
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Pisciculture : de l'étang à la récolte",
+      "categorie": "Pisciculture",
+      "prix": "15 $",
+      "accroche": "Installer un étang, choisir l'espèce, nourrir les poissons et vendre la récolte.",
+      "niveau": "Débutant",
+      "duree": "4 semaines, 2 h par semaine",
+      "format": "Cours PDF, schémas, études de cas, suivi WhatsApp",
+      "competences": [
+        "Choisir un site et creuser un étang qui retient l'eau",
+        "Choisir l'espèce (tilapia, silure) et la densité d'empoissonnement",
+        "Nourrir les poissons et suivre leur croissance",
+        "Surveiller la qualité de l'eau et prévenir les maladies"
+      ],
+      "public": "Agriculteurs, jeunes entrepreneurs, groupements ruraux.",
+      "modules": [
+        {
+          "titre": "Module 1 · Bases et espèces",
+          "lecons": [
+            "Tilapia et silure : atouts et exigences",
+            "Cycle d'élevage",
+            "Rentabilité d'un petit élevage"
+          ]
+        },
+        {
+          "titre": "Module 2 · Site et construction de l'étang",
+          "lecons": [
+            "Choix du terrain et du sol",
+            "Profondeur, digues, arrivée et sortie d'eau",
+            "Grilles de protection"
+          ]
+        },
+        {
+          "titre": "Module 3 · Alevins et alimentation",
+          "lecons": [
+            "Choisir des alevins sains",
+            "Aliments naturels et granulés",
+            "Rations et fréquence"
+          ]
+        },
+        {
+          "titre": "Module 4 · Qualité de l'eau et santé",
+          "lecons": [
+            "Température, oxygène, transparence",
+            "Signes de maladie",
+            "Mesures d'hygiène du bassin"
+          ]
+        },
+        {
+          "titre": "Module 5 · Récolte et vente",
+          "lecons": [
+            "Pêche et tri",
+            "Conservation et transport",
+            "Fixer son prix de vente"
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Agriculture moderne et fertilité du sol",
+      "categorie": "Agriculture",
+      "prix": "15 $",
+      "accroche": "Produire plus sur la même terre : sol, compost, rotations et irrigation économe.",
+      "niveau": "Débutant à intermédiaire",
+      "duree": "4 semaines, 2 h par semaine",
+      "format": "Cours PDF, fiches pratiques, suivi WhatsApp",
+      "competences": [
+        "Lire l'état de son sol avec des tests simples",
+        "Fabriquer un compost et utiliser le digestat du biogaz",
+        "Organiser rotations et associations de cultures",
+        "Économiser l'eau avec le paillage et le goutte-à-goutte"
+      ],
+      "public": "Agriculteurs, coopératives, étudiants en agronomie et génie rural.",
+      "modules": [
+        {
+          "titre": "Module 1 · Le sol",
+          "lecons": [
+            "Texture et structure",
+            "Tests simples sur le terrain",
+            "Acidité et correction"
+          ]
+        },
+        {
+          "titre": "Module 2 · Compost et engrais organiques",
+          "lecons": [
+            "Réussir un tas de compost",
+            "Digestat du biogaz",
+            "Dosages et épandage"
+          ]
+        },
+        {
+          "titre": "Module 3 · Cultures",
+          "lecons": [
+            "Semis, repiquage, densités",
+            "Rotations et associations",
+            "Calendrier cultural"
+          ]
+        },
+        {
+          "titre": "Module 4 · Eau et protection",
+          "lecons": [
+            "Paillage et irrigation goutte-à-goutte",
+            "Protection intégrée des cultures",
+            "Récolte et stockage"
+          ]
+        }
+      ]
+    },
+    {
+      "titre": "Eau, hygiène et assainissement rural",
+      "categorie": "Eau et hygiène",
+      "prix": "15 $",
+      "accroche": "Protéger l'eau de boisson du village et éviter les maladies liées à l'eau.",
+      "niveau": "Débutant à intermédiaire",
+      "duree": "4 semaines, 2 h par semaine",
+      "format": "Cours PDF, schémas, études de cas, suivi WhatsApp",
+      "competences": [
+        "Expliquer le lien entre eau, hygiène et santé",
+        "Concevoir un captage de source et sa zone de protection",
+        "Choisir et placer latrines, puisards et fosses",
+        "Rendre une eau plus sûre par filtration et désinfection"
+      ],
+      "public": "Techniciens, comités d'eau, enseignants, étudiants en génie rural.",
+      "modules": [
+        {
+          "titre": "Module 1 · Eau et santé",
+          "lecons": [
+            "Usages et qualités de l'eau",
+            "Maladies liées à l'eau",
+            "Rôle de l'hygiène"
+          ]
+        },
+        {
+          "titre": "Module 2 · Captage et puits",
+          "lecons": [
+            "Ouvrage de captage : drain, chambre, trop-plein",
+            "Puits protégé",
+            "Zone de protection en amont"
+          ]
+        },
+        {
+          "titre": "Module 3 · Traitement de l'eau",
+          "lecons": [
+            "Filtration simple",
+            "Désinfection",
+            "Stockage à domicile"
+          ]
+        },
+        {
+          "titre": "Module 4 · Évacuation et déchets",
+          "lecons": [
+            "Latrines et distances à respecter",
+            "Eaux usées, puisards et fosses",
+            "Gestion des déchets du village"
+          ]
+        }
+      ]
+    }
+  ]
+}

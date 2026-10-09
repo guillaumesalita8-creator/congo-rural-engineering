@@ -1,0 +1,216 @@
+media:
+  - name: pdf
+    label: Guides PDF
+    input: pdf
+    output: pdf
+    extensions: [pdf]
+  - name: images
+    label: Images (projets, photo)
+    input: images
+    output: images
+    extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: articles
+    label: Articles
+    type: file
+    path: articles.json
+    format: json
+    fields:
+      - name: articles
+        label: Articles
+        type: object
+        list: true
+        fields:
+          - name: titre
+            label: Titre
+            type: string
+          - name: categorie
+            label: Catégorie (Biogaz, Pisciculture, Agriculture moderne ou Eau et hygiène)
+            type: string
+          - name: duree
+            label: Durée de lecture (ex. 5 min)
+            type: string
+          - name: texte
+            label: Texte (laisse une ligne vide entre les paragraphes)
+            type: text
+          - name: points_cles
+            label: Chiffres à retenir (une ligne par chiffre, facultatif)
+            type: text
+  - name: videos
+    label: Vidéos
+    type: file
+    path: videos.json
+    format: json
+    fields:
+      - name: videos
+        label: Vidéos
+        type: object
+        list: true
+        fields:
+          - name: titre
+            label: Titre
+            type: string
+          - name: categorie
+            label: Catégorie
+            type: string
+          - name: description
+            label: Description courte
+            type: string
+          - name: url
+            label: Lien de la vidéo (TikTok ou YouTube)
+            type: string
+  - name: pdfs
+    label: Guides PDF gratuits
+    type: file
+    path: pdfs.json
+    format: json
+    fields:
+      - name: pdfs
+        label: Guides PDF
+        type: object
+        list: true
+        fields:
+          - name: titre
+            label: Titre
+            type: string
+          - name: description
+            label: Description courte
+            type: string
+          - name: fichier
+            label: Fichier PDF
+            type: file
+  - name: formations
+    label: Formations
+    type: file
+    path: formations.json
+    format: json
+    fields:
+      - name: formations
+        label: Formations
+        type: object
+        list: true
+        fields:
+          - name: titre
+            label: Titre
+            type: string
+          - name: categorie
+            label: Domaine (Biogaz, Pisciculture, ...)
+            type: string
+          - name: prix
+            label: Prix (ex. 25 $)
+            type: string
+          - name: accroche
+            label: Phrase de présentation
+            type: string
+          - name: niveau
+            label: Niveau
+            type: string
+          - name: duree
+            label: Durée
+            type: string
+          - name: format
+            label: Format
+            type: string
+          - name: competences
+            label: À la fin, l'élève saura
+            type: string
+            list: true
+          - name: public
+            label: Pour qui
+            type: string
+          - name: modules
+            label: Modules
+            type: object
+            list: true
+            fields:
+              - name: titre
+                label: Titre du module
+                type: string
+              - name: lecons
+                label: Leçons
+                type: string
+                list: true
+  - name: livres
+    label: Livres
+    type: file
+    path: livres.json
+    format: json
+    fields:
+      - name: livres
+        label: Livres
+        type: object
+        list: true
+        fields:
+          - name: titre
+            label: Titre
+            type: string
+          - name: description
+            label: Description
+            type: string
+          - name: prix
+            label: Prix (ex. 10 $)
+            type: string
+  - name: projets
+    label: Projets et réalisations
+    type: file
+    path: projets.json
+    format: json
+    fields:
+      - name: projets
+        label: Projets
+        type: object
+        list: true
+        fields:
+          - name: titre
+            label: Titre du projet
+            type: string
+          - name: domaine
+            label: Domaine (ex. Hydraulique rurale)
+            type: string
+          - name: lieu
+            label: Lieu
+            type: string
+          - name: annee
+            label: Année
+            type: string
+          - name: probleme
+            label: Problème rencontré
+            type: text
+          - name: solution
+            label: Solution technique
+            type: text
+          - name: resultat
+            label: Résultat obtenu
+            type: text
+          - name: photo
+            label: Photo
+            type: image
+          - name: photo_alt
+            label: Description de la photo
+            type: string
+  - name: fondateur
+    label: Fondateur (À propos)
+    type: file
+    path: fondateur.json
+    format: json
+    fields:
+      - name: nom
+        label: Nom
+        type: string
+      - name: titre
+        label: Titre
+        type: string
+      - name: bio
+        label: Présentation courte
+        type: text
+      - name: photo
+        label: Photo professionnelle
+        type: image
+      - name: photo_alt
+        label: Description de la photo
+        type: string
+      - name: points
+        label: Autres informations (une par ligne)
+        type: string
+        list: true
