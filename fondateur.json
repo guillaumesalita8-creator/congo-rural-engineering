@@ -1,8 +1,12 @@
 {
-  "nom": "Salita Guillaume",
-  "titre": "Fondateur de Congo Rural Engineering",
-  "bio": "Ingénieur en génie rural.",
-  "photo": "",
-  "photo_alt": "Portrait de Salita Guillaume",
-  "points": []
+  "nom": "Paluku Salita Guillaume",
+  "titre": "Ingénieur en génie rural · Fondateur de Congo Rural Engineering",
+  "bio": "L'ingénierie me fait rêver depuis tout petit. J'ai d'abord choisi la construction, puis le génie rural, pour marier le génie civil et l'agriculture. Je viens d'un milieu rural : je connais ses besoins de l'intérieur.",
+  "photo": "fondateur.jpg",
+  "photo_alt": "Paluku Salita Guillaume, casque blanc, utilisant un niveau optique sur le terrain",
+  "points": [
+    "Formation en construction : Institut Moyo Safi de Butembo.",
+    "Formation en génie rural : IBTP de Butembo.",
+    "Ce que je fais : conception, calculs et formations en génie rural, pour les agriculteurs et ceux qui veulent apprendre."
+  ]
 }

@@ -6,7 +6,7 @@
 <title>Congo Rural Engineering | Génie rural et formations en RDC</title>
 <meta name="description" content="Congo Rural Engineering : formations, ressources techniques et accompagnement de projets en génie rural. Hydraulique, irrigation, construction rurale, biogaz, topographie en RDC et en Afrique.">
 <meta name="keywords" content="génie rural, ingénierie rurale, hydraulique rurale, irrigation, construction rurale, topographie, agriculture, biogaz, pisciculture, RDC, Afrique, BTP RDC, formation génie civil">
-<meta name="author" content="Salita Guillaume">
+<meta name="author" content="Paluku Salita Guillaume">
 <meta name="theme-color" content="#1d5c3a">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://guillaumesalita8-creator.github.io/congo-rural-engineering/">
@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Congo Rural Engineering","url":"https://guillaumesalita8-creator.github.io/congo-rural-engineering/","description":"Plateforme de formations, de ressources techniques et d'accompagnement de projets en génie rural, en République Démocratique du Congo et en Afrique.","areaServed":["CD","Afrique"],"knowsAbout":["génie rural","hydraulique rurale","irrigation","construction rurale","topographie","biogaz","pisciculture"],"sameAs":["https://www.facebook.com/profile.php?id=61584759847537","https://www.tiktok.com/@ir.gr.salita.guil"],"founder":{"@type":"Person","name":"Salita Guillaume"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"EducationalOrganization","name":"Congo Rural Engineering","url":"https://guillaumesalita8-creator.github.io/congo-rural-engineering/","description":"Plateforme de formations, de ressources techniques et d'accompagnement de projets en génie rural, en République Démocratique du Congo et en Afrique.","areaServed":["CD","Afrique"],"knowsAbout":["génie rural","hydraulique rurale","irrigation","construction rurale","topographie","biogaz","pisciculture"],"sameAs":["https://www.facebook.com/profile.php?id=61584759847537","https://www.tiktok.com/@ir.gr.salita.guil"],"founder":{"@type":"Person","name":"Paluku Salita Guillaume"}}</script>
 <style>
 /* Mise en page : site d'une page, en-tête fixe, sections alternées, données lues dans des fichiers JSON modifiables. */
 :root {
@@ -863,7 +863,7 @@ gardez aussi à distance les puisards, les enclos d&#x27;animaux et les tas de d
   load('fondateur', null).then(function (f) {
     var box = document.getElementById('founder'); f = f || {};
     box.textContent = '';
-    var nom = f.nom || 'Salita Guillaume';
+    var nom = f.nom || 'Paluku Salita Guillaume';
     if (f.photo) { var im = el('img', 'photo'); im.src = String(f.photo).replace(/^\//, ''); im.alt = f.photo_alt || ('Portrait de ' + nom); im.width = 144; im.height = 144; im.loading = 'lazy'; box.appendChild(im); }
     else { var ph = el('div', 'photo', nom.split(/\s+/).map(function (w) { return w.charAt(0); }).join('').slice(0, 2).toUpperCase()); ph.setAttribute('role', 'img'); ph.setAttribute('aria-label', 'Emplacement de la photo de ' + nom); box.appendChild(ph); }
     box.appendChild(el('h3', '', nom)); box.appendChild(el('p', 'role', f.titre || 'Fondateur'));
