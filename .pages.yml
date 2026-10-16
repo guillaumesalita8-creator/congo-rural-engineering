@@ -151,6 +151,10 @@ content:
           - name: prix
             label: Prix (ex. 10 $)
             type: string
+          - name: sommaire
+            label: Sommaire (un chapitre par ligne)
+            type: string
+            list: true
   - name: projets
     label: Projets et réalisations
     type: file

@@ -163,13 +163,17 @@ p { margin: 0; }
 .fcard .btn { width: 100%; }
 .terms { margin-top: 1.5rem; padding: 0.9rem 1.1rem; border-left: 4px solid var(--ochre); background: var(--surface); color: var(--muted); font-size: 0.97rem; border-radius: 0 4px 4px 0; }
 .sub { margin-top: 3rem; }
-.book { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
+.book { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto auto; min-width: 0; }
 .cover { padding: 1.1rem; background: var(--accent); color: var(--accent-fg); min-height: 10rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; }
 .cover .tag { color: inherit; opacity: 0.85; }
 .cover h3 { font-size: 1.8rem; text-transform: uppercase; }
 .book .info { padding: 0.9rem 1.1rem 0; color: var(--muted); }
 .book .buy { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.9rem 1.1rem 1.1rem; }
 .book .pr { font-weight: 700; }
+.book .toc { padding: 0.6rem 1.1rem 0; }
+.book .toc summary { cursor: pointer; font-weight: 700; color: var(--accent); min-height: 2.25rem; display: flex; align-items: center; }
+.book .toc ul { margin: 0.4rem 0 0 1.1rem; color: var(--muted); font-size: 0.95rem; }
+.book .toc li { margin-bottom: 0.25rem; }
 
 /* ressources */
 .tools { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem; }
@@ -824,7 +828,9 @@ gardez aussi à distance les puisards, les enclos d&#x27;animaux et les tas de d
       var b = el('article', 'book'), cv = el('div', 'cover'); cv.appendChild(el('span', 'tag', 'Livre · PDF')); cv.appendChild(el('h3', '', l.titre));
       var buy = el('div', 'buy'); buy.appendChild(el('span', 'pr', 'Prix : ' + (l.prix || 'sur demande')));
       buy.appendChild(waBtn('Commander', 'Bonjour, je veux commander le livre « ' + l.titre + ' ».'));
-      b.appendChild(cv); b.appendChild(el('p', 'info', l.description || '')); b.appendChild(buy); box.appendChild(b);
+      b.appendChild(cv); b.appendChild(el('p', 'info', l.description || ''));
+      if (l.sommaire && l.sommaire.length) { var dt = el('details', 'toc'); dt.appendChild(el('summary', '', 'Voir le sommaire')); var ul = el('ul'); l.sommaire.forEach(function (x) { ul.appendChild(el('li', '', x)); }); dt.appendChild(ul); b.appendChild(dt); }
+      b.appendChild(buy); box.appendChild(b);
     });
   });
 

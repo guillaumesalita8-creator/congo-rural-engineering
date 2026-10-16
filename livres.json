@@ -2,8 +2,21 @@
   "livres": [
     {
       "titre": "Nos déchets, c'est de l'or",
-      "description": "Comment transformer les déchets en énergie et en engrais grâce au biogaz.",
-      "prix": "50 $"
+      "description": "Un guide illustré pour transformer la bouse et les déchets organiques en gaz de cuisine et en engrais : comprendre la fermentation, dimensionner un digesteur, le construire, utiliser le gaz et le digestat en sécurité. Avec des coupes détaillées de chaque type de digesteur.",
+      "prix": "50 $",
+      "sommaire": [
+        "Avant-propos : un monde en harmonie avec la nature",
+        "1. Le déchet n'existe pas : le cycle de la ferme",
+        "2. Comprendre la fermentation",
+        "3. Quels déchets, et en quelle quantité ?",
+        "4. Dimensionner son digesteur",
+        "5. Les types de digesteurs et leur construction",
+        "6. Utiliser le gaz et exploiter l'installation",
+        "7. Le digestat : l'engrais qui sort du digesteur",
+        "8. Sécurité et santé",
+        "9. Calculer la rentabilité de son projet",
+        "Annexes : chiffres à retenir, liste de contrôle, lexique"
+      ]
     }
   ]
 }
