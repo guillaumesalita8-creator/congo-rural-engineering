@@ -218,3 +218,12 @@ content:
         label: Autres informations (une par ligne)
         type: string
         list: true
+  - name: analytics
+    label: Statistiques de visite
+    type: file
+    path: analytics.json
+    format: json
+    fields:
+      - name: umami_website_id
+        label: Identifiant du site Umami (laisser vide pour désactiver)
+        type: string

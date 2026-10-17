@@ -871,6 +871,14 @@ gardez aussi à distance les puisards, les enclos d&#x27;animaux et les tas de d
     (f.points || []).forEach(function (x) { box.appendChild(el('p', 'bio', x)); });
   });
 
+  /* statistiques de visite : s'activent seulement si un identifiant Umami est renseigné dans analytics.json */
+  load('analytics', null).then(function (a) {
+    var id = a && String(a.umami_website_id || '').trim();
+    if (!/^[0-9a-f-]{36}$/i.test(id || '')) return;
+    var sc = document.createElement('script'); sc.defer = true; sc.src = 'https://cloud.umami.is/script.js'; sc.setAttribute('data-website-id', id); document.head.appendChild(sc);
+    var ft = document.querySelector('footer .wrap'); if (ft) ft.appendChild(el('p', '', 'Statistiques de visite anonymes, sans cookies.'));
+  });
+
   /* formulaire : prépare le message WhatsApp */
   document.getElementById('cform').addEventListener('submit', function (e) {
     e.preventDefault();
